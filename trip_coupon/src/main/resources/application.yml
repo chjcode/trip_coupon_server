@@ -2,10 +2,10 @@ spring:
   application:
     name: trip_coupon
 
-# datasource setting
+  # datasource setting
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhot:3306/ssafytrip?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/tripcoupon?serverTimezone=UTC
     username: ssafy
     password: ssafy
 

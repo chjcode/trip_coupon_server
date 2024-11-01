@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.trip_coupon.domain.user.entity.UserDAO">
+
+    <select id="createUser" parameterType="User">
+        INSERT INTO user (id,nickname,email,password,role, registered_at)
+        VALUES (#{id}, #{nickname}, #{email}, #{password}, #{role}, #{registeredAt})
+    </select>
+
+
+
+</mapper>
