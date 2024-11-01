@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: trip_coupon
+
+# datasource setting
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhot:3306/ssafytrip?serverTimezone=UTC
+    username: ssafy
+    password: ssafy
+
+# myBatis config setting
+mybatis:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.ssafy.trip_coupon.domain.**.entity
