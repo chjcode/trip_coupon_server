@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @NoArgsConstructor
 @Getter
@@ -26,4 +27,10 @@ public class User {
         this.role = role;
         this.registeredAt = registeredAt;
     }
+
+    // 비밀번호 암호화 메서드
+    public void encodePassword(PasswordEncoder passwordEncoder) {
+        this.password = passwordEncoder.encode(this.password);
+    }
+
 }
