@@ -16,16 +16,16 @@ public enum ClientErrorCode implements ErrorCodeModel{
 
     @Override
     public int getStatusCode() {
-        return 0;
+        return this.statusCode;
     }
 
     @Override
     public String getSystemErrorCode() {
-        return "";
+        return this.code;
     }
 
     @Override
     public String getErrorMessage() {
-        return "";
+        return this.message;
     }
 }
