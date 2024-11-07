@@ -1,17 +1,17 @@
 package com.ssafy.trip_coupon.global.auth.service;
 
 import com.ssafy.trip_coupon.global.util.JwtUtil;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AuthService {
 
-    @Autowired
-    private JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil;
 
-    @Autowired
-    private TokenService tokenService; // Redis에 리프레시 토큰을 저장하는 서비스
+    private final TokenService tokenService; // Redis에 리프레시 토큰을 저장하는 서비스
 
     // 리프레시 토큰을 사용하여 새로운 액세스 토큰을 발급
     public String refreshAccessToken(String refreshToken) {
