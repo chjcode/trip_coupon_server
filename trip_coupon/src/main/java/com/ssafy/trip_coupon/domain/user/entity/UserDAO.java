@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserDAO {
-    public void createUser(User user);
-    public User findUserByEmail(String email);
+    void createUser(User user);
+    User findUserByEmail(String email);
+    User findUserById(Long id);
 }
