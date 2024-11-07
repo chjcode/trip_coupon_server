@@ -16,7 +16,7 @@
         WHERE email = #{email}
     </select>
 
-    <select id="getUserById" parameterType="Long" resultType="User">
+    <select id="findUserById" parameterType="Long" resultType="User">
         SELECT id, nickname, email, password, role, registered_at
         FROM user
         WHERE id = #{id}
