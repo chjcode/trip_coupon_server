@@ -1,4 +1,5 @@
 package com.ssafy.trip_coupon.domain.board.dto;
 
-public record BoardSaveResponseDTO() {
+public record BoardSaveResponseDTO(Long diaryId) {
+
 }

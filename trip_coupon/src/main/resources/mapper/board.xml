@@ -23,8 +23,8 @@
     </resultMap>
 
     <insert id="saveBoard" parameterType="Board">
-        INSERT INTO board (user_id, title, content, created_at, update_at)
-        VALUES (#{user.id}, #{title}, #{content}, #{createdAt}, #{updatedAt})
+        INSERT INTO board (user_id, title, content)
+        VALUES (#{user.id}, #{title}, #{content})
     </insert>
     
     <update id="updateBoard" parameterType="Board">
