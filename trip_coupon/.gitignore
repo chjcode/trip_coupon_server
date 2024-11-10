@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### 인프라 관련 파일 ###
+/grafana/
+/mysql/
