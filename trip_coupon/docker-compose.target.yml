@@ -1,0 +1,53 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: always
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana:/var/lib/grafana
+    restart: always
+  mysql:
+    image: mysql:8.0.34
+    volumes:
+      - ./mysql/init/:/docker-entrypoint-initdb.d/
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/storage:/var/lib/mysql
+    environment:
+      TZ: "Asia/Seoul"
+      MYSQL_DATABASE: ssafytrip
+      MYSQL_ROOT_PASSWORD: 1234
+    ports:
+      - "3306:3306"
+    restart: always
+  mysqld_exporter:
+    image: prom/mysqld-exporter
+    environment:
+      - DATA_SOURCE_NAME="root:1234@(mysql:3306)/"
+    command:
+      - "--mysqld.username=root:1234"
+      - "--mysqld.address=mysql:3306"
+    links:
+      - mysql
+    ports:
+      - 9104:9104
+    depends_on:
+      - mysql
+    restart: unless-stopped
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    command:
+      - '--path.rootfs=/host'
+    restart: unless-stopped
+    volumes:
+      - '/:/host:ro,rslave'
+    ports:
+      - "9100:9100"
