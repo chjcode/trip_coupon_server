@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.trip_coupon.domain.user.entity.UserDAO">
+
+    <insert id="createUser" parameterType="User">
+        INSERT INTO user (nickname,email,password,role, registered_at)
+        VALUES (#{nickname}, #{email}, #{password}, #{role}, #{registeredAt})
+    </insert>
+
+    <select id="findUserByEmail" parameterType="string" resultType="User">
+        SELECT id, nickname, email, password, role, registered_at
+        FROM user
+        WHERE email = #{email}
+    </select>
+
+    <select id="findUserById" parameterType="Long" resultType="User">
+        SELECT id, nickname, email, password, role, registered_at
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+</mapper>

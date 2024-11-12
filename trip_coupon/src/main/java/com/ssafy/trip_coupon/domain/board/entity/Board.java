@@ -13,14 +13,16 @@ import lombok.NoArgsConstructor;
 public class Board {
 
     private Long id;
+    private User user;
     private String title;
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     @Builder
-    public Board(Long id, String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Board(Long id, User user, String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
+        this.user = user;
         this.title = title;
         this.content = content;
         this.createdAt = createdAt;
