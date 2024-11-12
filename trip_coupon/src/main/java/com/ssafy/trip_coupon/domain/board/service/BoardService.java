@@ -31,6 +31,24 @@ public class BoardService {
         log.info("Board saved successfully with ID: {}", board.getId());
     }
 
+    public void save(String loginUserEmail, BoardSaveRequestDTO requestDTO) {
+        log.info("Saving board for user with Email: {}", loginUserEmail);
+        User user = getUserByEmail(loginUserEmail);
+        Board board =  saveBoard(requestDTO, user);
+        log.info("Board saved successfully with id: {}", board.getId());
+    }
+
+    private User getUserByEmail(String email) {
+        log.info("Fetching user with email: {}", email);
+        User user =  userDAO.findUserByEmail(email);
+        if (user == null) {
+            log.error("User not found with email: {}", email);
+            throw new SystemException(ClientErrorCode.USER_NOT_FOUND_ERR);
+        }
+        log.info("User found with email: {}", user.getEmail());
+        return user;
+    }
+
     private User getUserById(Long id) {
         log.info("Fetching user with ID: {}", id);
         User user =  userDAO.findUserById(id);

@@ -2,9 +2,11 @@ package com.ssafy.trip_coupon.global.auth.service;
 
 import com.ssafy.trip_coupon.global.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -16,6 +18,7 @@ public class AuthService {
     // 리프레시 토큰을 사용하여 새로운 액세스 토큰을 발급
     public String refreshAccessToken(String refreshToken) {
         String userId = jwtUtil.extractUserId(refreshToken); // 리프레시 토큰에서 userId 추출
+        log.info("Check ID: {}", userId);
         String storedToken = tokenService.getRefreshToken(userId); // Redis에서 저장된 리프레시 토큰 조회
 
         // 리프레시 토큰 검증
